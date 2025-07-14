@@ -1,11 +1,9 @@
 'use client';
-
 import { useMutation } from '@tanstack/react-query';
-import { createNote } from '@/lib/api/clientApi';
+import { addNote } from '@/lib/api/clientApi';
 import { NewNoteContent, Tag } from '@/types/note';
 import { useRouter } from 'next/navigation';
 import { useNoteDraftStore } from '@/lib/store/noteStore';
-
 import css from './NoteForm.module.css';
 
 export default function NoteForm() {
@@ -13,7 +11,7 @@ export default function NoteForm() {
   const { draft, setDraft, clearDraft } = useNoteDraftStore();
 
   const { mutate, isPending } = useMutation({
-    mutationFn: createNote,
+    mutationFn: addNote,
     onSuccess: () => {
       clearDraft();
       router.back();
@@ -35,7 +33,6 @@ export default function NoteForm() {
       content: formData.get('content') as string,
       tag: formData.get('tag') as Tag,
     };
-
     mutate(data);
   };
 
@@ -55,7 +52,6 @@ export default function NoteForm() {
           required
         />
       </div>
-
       <div className={css.formGroup}>
         <label htmlFor="content">Content</label>
         <textarea
@@ -67,7 +63,6 @@ export default function NoteForm() {
           className={css.textarea}
         />
       </div>
-
       <div className={css.formGroup}>
         <label htmlFor="tag">Tag</label>
         <select
@@ -84,7 +79,6 @@ export default function NoteForm() {
           <option value="Shopping">Shopping</option>
         </select>
       </div>
-
       <div className={css.actions}>
         <button type="button" className={css.cancelButton} onClick={handleClose}>
           Cancel

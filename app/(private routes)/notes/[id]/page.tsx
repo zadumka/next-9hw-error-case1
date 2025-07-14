@@ -1,5 +1,5 @@
 import NoteDetailsClient from './NoteDetails.client';
-import { fetchNoteById } from '@/lib/api/serverApi';
+import { getNoteById } from '@/lib/api/serverApi';
 import { Metadata } from 'next';
 
 interface NoteDetailsProps {
@@ -8,8 +8,7 @@ interface NoteDetailsProps {
 
 export async function generateMetadata({ params }: NoteDetailsProps): Promise<Metadata> {
   const { id } = await params;
-  const note = await fetchNoteById(id);
-
+  const note = await getNoteById(id);
   return {
     title: note.title,
     description: `${note.content.slice(0, 30)}...`,

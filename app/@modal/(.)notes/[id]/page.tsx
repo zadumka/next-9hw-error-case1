@@ -5,7 +5,6 @@ interface NoteDetailsProps {
 }
 
 export default async function NotePreview({ params }: NoteDetailsProps) {
-  const { id } = await params;
-
+  const { id } = params;
   return <NotePreviewClient id={id} />;
 }

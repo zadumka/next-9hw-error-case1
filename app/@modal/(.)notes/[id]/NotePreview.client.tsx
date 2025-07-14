@@ -1,10 +1,8 @@
 'use client';
-
 import { useQuery } from '@tanstack/react-query';
 import Modal from '@/components/Modal/Modal';
-import { fetchNoteById } from '@/lib/api/clientApi';
+import { getNoteById } from '@/lib/api/clientApi';
 import { useRouter } from 'next/navigation';
-
 import css from './NotePreview.module.css';
 
 interface NotePreviewClientProps {
@@ -20,7 +18,7 @@ export default function NotePreviewClient({ id }: NotePreviewClientProps) {
     error,
   } = useQuery({
     queryKey: ['note', id],
-    queryFn: () => fetchNoteById(id),
+    queryFn: () => getNoteById(id),
     refetchOnMount: false,
   });
 
@@ -38,7 +36,6 @@ export default function NotePreviewClient({ id }: NotePreviewClientProps) {
           <button className={css.backBtn} onClick={handleClose}>
             Back
           </button>
-
           <div className={css.header}>
             <h2>{note.title}</h2>
           </div>
