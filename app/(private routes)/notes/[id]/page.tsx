@@ -1,5 +1,5 @@
 import NoteDetailsClient from './NoteDetails.client';
-import { getNoteById } from '@/lib/api/serverApi';
+import { getNoteById } from '@/lib/api/clientApi';
 import { Metadata } from 'next';
 
 interface NoteDetailsProps {
