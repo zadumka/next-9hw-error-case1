@@ -5,7 +5,7 @@ import { useDebouncedCallback } from 'use-debounce';
 import NoteList from '@/components/NoteList/NoteList';
 import SearchBox from '@/components/SearchBox/SearchBox';
 import Pagination from '@/components/Pagination/Pagination';
-import { getNotes } from '@/lib/api/clientApi';
+import { getNotes } from '@/lib/api/serverApi';
 import Link from 'next/link';
 import { Tag } from '@/types/note';
 import css from './page.module.css';
